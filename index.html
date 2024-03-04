@@ -576,4 +576,89 @@ inputNumber.addEventListener("input", function () {
         var label = document.querySelector('label[for="inputNumber"]');
         if (currentNomorPemanggil.length === 4 && selectedCategory) {
             label.innerHTML = `Pulsa (${selectedCategory.propaider})`;
-            label.style.background = selectedCategory.
+            label.style.background = selectedCategory.Warna; // Mengatur warna gradien latar belakang
+        } else {
+            label.innerHTML = ''; // Kembalikan teks label ke default
+            label.style.background = ''; // Kembalikan warna latar belakang ke default
+        }
+
+        // Memperbarui nilai nomor pemanggil sebelumnya
+        previousNomorPemanggil = currentNomorPemanggil;
+    }
+});
+
+
+
+    // Logika perubahan format nomor telepon
+    $('#inputNumber').on('change', function () {
+        var no = $(this).val()
+        var newno = no.replace('-', '').trim()
+        var cek = newno.substring(0, 3).replace('-', '').trim()
+        var ceka = newno.substring(3, 26).replace('-', '').trim()
+
+        if (cek == '+62') {
+            let result = 0
+            $(this).val(result + ceka)
+            getNmr(result + ceka)
+        } else {
+            $(this).val(cek + ceka)
+            getNmr(cek + ceka);
+        }
+    });
+
+    function getNmr(nomor) {
+    // Implementasikan aksi yang diinginkan dengan nomor telepon di sini
+    console.log("Nomor Telepon yang Dipilih: " + nomor);
+    // Update nilai input dengan nomor yang dipilih
+    $('#hasil_kontak').val(nomor);
+
+    // Memperbarui nomor tujuan pada elemen HTML di dalam modal
+    $('#nomorTujuanModal').text(nomor);
+    
+    // Memanggil fungsi handleInput untuk menampilkan produk yang sesuai
+    handleInput();
+    }
+           // Tambahkan event listener ke elemen input
+    inputNumber.addEventListener("input", function () {
+        // Memperbarui nomor tujuan pada elemen HTML di dalam modal
+        nomorTujuanModal.textContent = inputNumber.value;
+
+        handleInput();
+    });
+
+    regulerButton.addEventListener("click", function () {
+        regulerButton.classList.add('active');
+        transferButton.classList.remove('active');
+        handleInput();
+    });
+
+    transferButton.addEventListener("click", function () {
+        transferButton.classList.add('active');
+        regulerButton.classList.remove('active');
+        handleInput();
+    });
+
+    // Tambahkan event listener ke elemen input
+    inputNumber.addEventListener("input", function () {
+        handleInput();
+    });
+
+    handleInput();
+});
+// Tangani klik pada elemen dengan class "ambil_kontak"
+$('.ambil_kontak').on('click', function (event) {
+    // Mencegah navigasi ke halaman yang ditentukan dalam atribut href
+    event.preventDefault();
+    console.log("Elemen Ambil Kontak diklik");
+    // Navigasi manual ke halaman ambil kontak
+    window.location.href = $(this).attr('href');
+});
+        </script>
+<script>
+<!--
+document.write(unescape("%3Cstyle%3E%0A%20%20%20%20jasaedithtml-oke%7B%0A%20%20%20%20%20%20%20%20position%3A%20sticky%3B%20top%3A%200%3B%20z-index%3A%201000%3B%0A%20%20%20%20%7D%0A%20%20%20%20.jasaedithtml-image%7B%0A%20%20%20%20%20%20%20%20width%3A45px%3Bheight%3A45px%3Bfloat%3Aleft%3Bborder-radius%3A%2010px%3Bmargin-top%3A%200px%3Bmargin-left%3A0px%3Bfont-weight%3A%20bold%3Bmargin-right%3A%2010px%3B%0A%20%20%20%20%20border%3A0px%20solid%20%23ccc%0A%20%20%20%20%7D.jasaedithtmlimg%7B%0A%20%20%20%20%20%20%20%20width%3A200px%3Bcolor%3A%23fff%3B%20margin-top%3A%2050px%3B%0A%20%20%20%20%7D%0A%3C/style%3E"));
+//-->
+</script>
+
+</body>
+</html>
