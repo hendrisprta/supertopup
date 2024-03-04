@@ -1,1399 +1,579 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Super Top Up-Daftar Harga</title>
-  <link rel="icon" href="https://storage1.bukaolshop.com/images4/35933/icon/7833835.png" type="image/x-icon">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛒</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: aliceblue;
+        }
 
-  <style type="text/css">
-    @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-    @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
-    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+        header {
+            background-color: #1565c0;
+            color: #fff;
+            text-align: center;
+            padding: 0px;
+             
+            border-radius: 0 0 0% 0%;
+            height: 80px;
+        }
 
+        .box-in-header {
+            background-color: #fff;
+            color: #333;
+            width: 90%;
+            padding: 1em;
+            border-radius: 5px;
+            display: inline-block;
+            border: 2px solid aliceblue;
+            top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            box-sizing: border-box;
+        }
 
-    /*---------- Loader Elz Design ----------*/
+        @media (max-width: 768px) {
+            header {
+                height: 130px;
+            }
 
-    .loadingspinner {
-      --square: 26px;
-      --offset: 30px;
-      --duration: 2.4s;
-      --delay: 0.2s;
-      --timing-function: ease-in-out;
-      --in-duration: 0.4s;
-      --in-delay: 0.1s;
-      --in-timing-function: ease-out;
-      width: calc(3 * var(--offset) + var(--square));
-      height: calc(2 * var(--offset) + var(--square));
-      padding: 0px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 10px;
-      margin-bottom: 30px;
-      position: relative;
+            .box-in-header {
+                top: 15px;
+            }
+        }
+
+        .box-in-header label {
+            display: block;
+            background: #fff; 
+            text-align: left;
+            border-radius:10px;
+            padding: 10px 10px 10px 0px;
+            color:white;
+            margin-bottom: 0px;
+            box-shadow: 0px; 
+        }
+
+        .box-in-header input {
+            width: calc(100% - 1em);
+            padding: 10px 10px 10px 10px;
+            margin: 0px 20px 0px 0px;
+            background:#000;
+            color:#fff;
+            border: 0px solid #555;
+            border-radius: 5px;
+            outline: none;
+            height:45px;
+            
+        }
+
+       
+
+        .second-box {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            display: inline-block;
+            align-items: center;
+            height: 0;
+        }
+
+       .group-button {
+            display: flex;
+        }
+
+        .group-button button {
+            flex: 1;
+            padding:2px 7px 5px 7px;  
+            height:30px;          
+            margin: 5px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            outline: none;
+            
+        }
+                
+        
+        .group-button button:hover {
+            background-color: #1565c0;
+            color: #fff;
+            transform: scale(1.05);
+            height:30px;  
+        }
+
+        .group-button button:active {
+            transform: scale(0.95);
+            box-shadow: none;
+            height:30px;  
+        }        
+        
+        
+
+    /* Add your styling here */
+    ul {
+      list-style: none;
+      padding: 0;
     }
 
-    .loadingspinner div {
-      display: inline-block;
-      background: #42a5f5;
-      border: none;
-      border-radius: 5px;
-      width: var(--square);
-      height: var(--square);
-      position: absolute;
-      padding: 0px;
-      margin: 0px;
-      font-size: 6pt;
-      color: black;
-    }
-
-    .loadingspinner #square1 {
-      left: calc(0 * var(--offset));
-      top: calc(0 * var(--offset));
-      animation: square1 var(--duration) var(--delay) var(--timing-function) infinite,
-        squarefadein var(--in-duration) calc(1 * var(--in-delay)) var(--in-timing-function) both;
-    }
-
-    .loadingspinner #square2 {
-      left: calc(0 * var(--offset));
-      top: calc(1 * var(--offset));
-      animation: square2 var(--duration) var(--delay) var(--timing-function) infinite,
-        squarefadein var(--in-duration) calc(1 * var(--in-delay)) var(--in-timing-function) both;
-    }
-
-    .loadingspinner #square3 {
-      left: calc(1 * var(--offset));
-      top: calc(1 * var(--offset));
-      animation: square3 var(--duration) var(--delay) var(--timing-function) infinite,
-        squarefadein var(--in-duration) calc(2 * var(--in-delay)) var(--in-timing-function) both;
-    }
-
-    .loadingspinner #square4 {
-      left: calc(2 * var(--offset));
-      top: calc(1 * var(--offset));
-      animation: square4 var(--duration) var(--delay) var(--timing-function) infinite,
-        squarefadein var(--in-duration) calc(3 * var(--in-delay)) var(--in-timing-function) both;
-    }
-
-    .loadingspinner #square5 {
-      left: calc(3 * var(--offset));
-      top: calc(1 * var(--offset));
-      animation: square5 var(--duration) var(--delay) var(--timing-function) infinite,
-        squarefadein var(--in-duration) calc(4 * var(--in-delay)) var(--in-timing-function) both;
-    }
-
-    @keyframes square1 {
-      0% {
-        left: calc(0 * var(--offset));
-        top: calc(0 * var(--offset));
-      }
-
-      8.333% {
-        left: calc(0 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      100% {
-        left: calc(0 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-    }
-
-    @keyframes square2 {
-      0% {
-        left: calc(0 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      8.333% {
-        left: calc(0 * var(--offset));
-        top: calc(2 * var(--offset));
-      }
-
-      16.67% {
-        left: calc(1 * var(--offset));
-        top: calc(2 * var(--offset));
-      }
-
-      25.00% {
-        left: calc(1 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      83.33% {
-        left: calc(1 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      91.67% {
-        left: calc(1 * var(--offset));
-        top: calc(0 * var(--offset));
-      }
-
-      100% {
-        left: calc(0 * var(--offset));
-        top: calc(0 * var(--offset));
-      }
-    }
-
-    @keyframes square3 {
-
-      0%,
-      100% {
-        left: calc(1 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      16.67% {
-        left: calc(1 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      25.00% {
-        left: calc(1 * var(--offset));
-        top: calc(0 * var(--offset));
-      }
-
-      33.33% {
-        left: calc(2 * var(--offset));
-        top: calc(0 * var(--offset));
-      }
-
-      41.67% {
-        left: calc(2 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      66.67% {
-        left: calc(2 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      75.00% {
-        left: calc(2 * var(--offset));
-        top: calc(2 * var(--offset));
-      }
-
-      83.33% {
-        left: calc(1 * var(--offset));
-        top: calc(2 * var(--offset));
-      }
-
-      91.67% {
-        left: calc(1 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-    }
-
-    @keyframes square4 {
-      0% {
-        left: calc(2 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      33.33% {
-        left: calc(2 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      41.67% {
-        left: calc(2 * var(--offset));
-        top: calc(2 * var(--offset));
-      }
-
-      50.00% {
-        left: calc(3 * var(--offset));
-        top: calc(2 * var(--offset));
-      }
-
-      58.33% {
-        left: calc(3 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      100% {
-        left: calc(3 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-    }
-
-    @keyframes square5 {
-      0% {
-        left: calc(3 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      50.00% {
-        left: calc(3 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      58.33% {
-        left: calc(3 * var(--offset));
-        top: calc(0 * var(--offset));
-      }
-
-      66.67% {
-        left: calc(2 * var(--offset));
-        top: calc(0 * var(--offset));
-      }
-
-      75.00% {
-        left: calc(2 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-
-      100% {
-        left: calc(2 * var(--offset));
-        top: calc(1 * var(--offset));
-      }
-    }
-
-    @keyframes squarefadein {
-      0% {
-        transform: scale(0.75);
-        opacity: 0.0;
-      }
-
-      100% {
-        transform: scale(1.0);
-        opacity: 1.0;
-      }
-    }
-
-    /*---------- End Loader ----------*/
+    .product-item {
+      background-color: #fff;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  height:67px; 
+}
 
 
-    /*---------- CSS PULSA ----------*/
-    * {
-      font-family: 'Muli'
-    }
 
-    body {
-      background-color: #EDF1FC
-    }
-
-    p {
+.product-item p {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size:13.5px;
+    opacity:0.9;
+    position: absolute;
+    right: 9%;
+    color:#fff;
+    background-color: #1565c0;
+    border-radius: 10px 0px 10px 0px;
+    padding:2px 10px;
+}
+.product-item .category-info {
+    font-size: 10px;
+    margin-top:0px;
+    background: transparent;
+    text-align: right;
+    position: absolute;
+    right: 9%;
+    color:#1aa556;
+    padding:2px 10px;
+    border-radius: 15px;
+}
+    h2 {
+      font-size: 13px;
       margin: 0;
-      font-size: 13px
+      width: 55%;
+      border-left:5px solid #1565c0;
+      border-radius: 2% 0% 0% 2%;
+      font-weight:bold;
+      height:47px;
+      padding-left:8px;
     }
+  /* Tambahan CSS untuk memastikan tata letak modal yang benar */
+.modal.fade .modal-dialog.modal-dialog-scrollable {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;     
+    transform: translate(0, 100%);
+    transition: transform 0.3s ease-out;
+    border-radius: 0; /* Menghilangkan border-radius bawaan Bootstrap pada elemen modal */
+}
 
-    input {
-      border: none;
-      -webkit-transition: 0.5s;
-      transition: 0.5s;
-      outline: none;
-    }
+.modal-content{
+    border-radius:0;
+    border: 0px solid #ccc;
+    background-color:#fff;
+}
 
-    select {
-      border: none;
-      -webkit-transition: 0.5s;
-      transition: 0.5s;
-      outline: none;
-      border: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      -ms-appearance: none;
+.modal-header{
+    background-color:#1565c0;
+    color:#fff;
+    height:35px;border-radius: 0px;
+}
 
-    }
+.modal.show .modal-dialog.modal-dialog-scrollable {
+    transform: translate(0, 0);
+}
 
-    a,
-    a:focus,
-    a:hover {
-      text-decoration: none;
-      color: inherit;
-    }
 
-    ::placeholder {
-      font-size: 13px;
-    }
+/* Tambahkan ke bagian CSS Anda */
 
-    .elz-bg-header {
-      background-color: #42a5f5;
-      height: 110px;
-      border-radius: 0px 0 50px 50px;
-    }
+.modal-body .table {
+    border: none; /* Menghilangkan garis tabel */
+}
 
-    .elz-container-panel {
-      padding: 0 10px;
-      margin-top: -80px
-    }
-
-    .elz-panel-header {
+.modal-body .table tbody tr td {
+    border: none; /* Menghilangkan garis di sel tabel */
+}
+ .modal-body .table tbody tr td {
+    padding: 7px 0px; /* Atur ruang sel dalam tabel */
+}
+.modal-title {    
+}
+.blink {
+      width: 15px;
+      height: 15px;
       background-color: #fff;
-      padding: 15px;
-      border-radius: 5px;
-      box-shadow: rgba(0, 0, 0, 0.15) 0 0 10px 1px;
+      border-radius: 50%;
+      animation: blink-animation 1s infinite;
     }
 
-    .warn {
-      font-size: 15px
+    @keyframes blink-animation {
+      0%, 50%, 100% {
+        opacity: 0;
+      }
+      25%, 75% {
+        opacity: 1;
+      }
     }
-
-    .input {
-      width: 100%
+    ::placeholder{
+        color:#999;
+        font-size: 13px;
     }
-
-    .form-input {
-      border: 1px solid #42a5f5;
-      border-radius: 5px;
-      font-size: 15px;
-      width: 100%;
-      position: relative;
-      z-index: 0;
-
-    }
-
-    .img-contact {
-      width: 40px;
-      padding: 8px;
-      border-radius: 5px;
-      background-color: #42a5f5;
-      box-shadow: rgba(0, 0, 0, 0.15) 0 0 5px 1px;
-
-    }
-
-    .contact-barcode {
-      margin: 0 5px
-    }
-
-    label {
-      font-size: 13px;
-    }
-
-    .label-input {
-      position: absolute;
-      margin-top: -25px;
-      font-weight: bold;
-      z-index: 1;
-      color: #777777
-    }
-
-    .btn-pulsa {
-      color: rgba(0, 0, 0, 0.6);
-    }
-
-    .btn-pulsa p {
-      font-size: 15px;
-      font-weight: normal;
-    }
-
-    .bg-pulsa-active {
-      background-color: #42a5f5;
-      pointer-events: none;
-      border-radius: 5px;
-      color: #fff;
-      -webkit-animation-duration: 1s;
-      animation-duration: 1s;
-      -webkit-animation-duration: var(--animate-duration);
-      animation-duration: var(--animate-duration);
-      -webkit-animation-fill-mode: both;
-      animation-fill-mode: both;
-      -webkit-animation-name: fadeIn;
-      animation-name: fadeIn
-    }
-
-    .pilihan-operator {
-      margin-bottom: 35px;
-    }
-
-    #namaOperator {
-      font-size: 16px;
-      font-weight: bold
-    }
-
-    .pilihan-pulsa {
-      background-color: #fff;
-      box-shadow: rgba(0, 0, 0, 0.15) 0 0 5px 1px;
-      padding: 5px;
-      border-radius: 5px
-    }
-
-    .t-load {
-      font-size: 15px
-    }
-
-    .produk-none img {
-      width: 75%;
-      border-radius: 5px;
-      box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 1px;
-    }
-
-    .produk-none p {
-      font-size: 18px
-    }
-
-    .loading {
-      margin-top: 50px
-    }
-
-    .cerd {
-      background-image: url('https://img.freepik.com/free-vector/copy-space-wavy-white-background-layers_23-2148845469.jpg?w=2000');
-      background-repeat: no-repeat;
-      background-size: cover;
-      border-radius: 5px;
-      padding: 10px;
-      box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 1px;
-    }
-
-    .nama-produk {
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .harga-produk {
-      font-size: 16px;
-      color: #42a5f5
-    }
-
-    .bg-canvas {
-      background-color: #42a5f5;
-      color: white;
-    }
-
-    .offcanvas-bottom {
-      height: auto !important;
-    }
-
-    .rc {
-      font-size: 18px;
-    }
-
-    .indx {
-      font-size: 14px;
-      opacity: 0.7
-    }
-
-    .val {
-      font-size: 14px;
-    }
-
-    .dashed {
-      border-top: 2px dashed #8c8b8b;
-    }
-
-    .bo {
-      border-top: 2px solid #8c8b8b;
-    }
-
-    .btn-beli {
-      background-color: #42a5f5;
-      border: #42a5f5;
-      color: white;
-      border-radius: 5px;
-      font-size: 15px;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: white
-    }
-
-    .btn-batal {
-      background-color: #808080;
-      border: #808080;
-      color: white;
-      border-radius: 5px;
-      font-size: 15px;
-      text-transform: uppercase;
-    }
-
-    .offcanvas-end {
-      width: 100% !important
-    }
-
-    .bg-canvas-start {
-      background-color: #42a5f5;
-      color: #fff
-    }
-
-    .bg-src {
-      background-color: transparent;
-    }
-
-    .name-paket {
-      font-size: 18px
-    }
-
-    .cardkat {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15)
-    }
-
-    .cardkat p {
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    #src {
-      font-size: 13px;
-      font-weight: bold
-    }
-
-    .val-cek {
-      color: #42a5f5
-    }
-
-    .pilih-wall {
-      font-size: 16px;
-      margin-top: 4px;
-      padding: 0 5px;
-      border-radius: 5px;
-      background-color: #42a5f5;
-      color: #fff;
-      box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px 1px;
-    }
-
-    .image-game {
-      width: 60px;
-      border-radius: 10px;
-      box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px 1px;
-    }
-
-    .text-game {
-      opacity: 0.8
-    }
-
-    .sec-input {
-      width: 75%;
-      margin-left: 20px
-    }
-
-    /*---------- End CSS Pulsa ----------*/
   </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Helvetica Neue:wght@400;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
-
 <body>
-  <!-- Header -->
-  <section class="elz-header">
-    <div class="elz-bg-header"></div>
-    <div class="elz-container-panel">
-      <div class="elz-panel-header">
-        <!-- Operator -->
-        <div class="pilihan-operator animate__animated animate__fadeIn" id="box-operator">
-          <div class="d-flex justify-content-beetween">
-            <div style="width: 100%">
-              <p>
-                <img width="35" id="imgOperator" class="rounded-circle">
-                <span id="namaOperator" class="ms-1"></span>
-              </p>
+    <header class="Jasaedithtml-oke">
+        <div class="box-in-header">
+           
+  
+     <img class="jasaedithtml-image" src="https://i.ibb.co/G9R90dG/digital-marketing-php-developer-jobs-meerut-delhi-ncr-ghaziabad-muzaffarnagar.gif"><p style="font-weight: 800;text-align: left;margin:0% 5% 0% 0%;font-size: 20px;"><b> Pulsa Reguler </b></p>
+     
+     <p style="font-weight: 1000;text-align: left;margin-top: -5px;font-size: 10px"><b> All Operator</b></p>   
+
+            
+            
+          <label>
+<div class="d-flex">
+<input type="tel" id="inputNumber" class="{{hasil_kontak}}" name="catatan" placeholder="Masukkan Nomor ..."/>
+<a href="https://mmstoreapps.webtoko.net/ambil_kontak" class="logo-link animate__animated animate__fadeIn">
+    <a href="https://supertopupud.bukaolshop.site/ambil_kontak"><img style="width: 45px;height:45px;border:1px solid #1565c0;box-shadow: none;border-radius: 5px; background: #1565c0; float:right;margin-right:0%;padding:4px;margin-top: 0px;" src="https://i.ibb.co/mBmCjbW/jasaedithtmlkontak.png"></a>
+</a>   
+</label>
+
+
+        </div>        
+        </div>
+        </div>
+         <div class="container"style="text-align: center; margin-top: 13px;padding:1k5px;background-color: aliceblue;">             
+  
+
+    </header>    <div id="produk-list-container" style="margin-top:20px;padding:20px">
+        <ul id="produk-list">
+            <center>
+            <div id="info"><img class="jasaedithtmlimg" src="https://i.ibb.co/G9R90dG/digital-marketing-php-developer-jobs-meerut-delhi-ncr-ghaziabad-muzaffarnagar.gif"><br><br><p style="float:left;font-size:12px;font-weight:600;padding-left:20%;padding-right:20%;color:#3b3b3b;" >Masukkan nomor tujuan untuk melihat produk</p></div></center>
+        </ul>
+    </div>       
+ <div class="modal fade" id="productModal" tabindex="-1" role="dialog"aria-labelledby="logoModal1Label" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                  <h3 style="font-size: 14px;margin-top: -10px;"class="modal-title" id="exampleModalLabel"><img style="width:20px;margin-top: -2px;margin-left: -7px;" src="https://i.ibb.co/D4rGTFQ/20221212-220311.png"> Rincian pesanan :</h3>
             </div>
-            <div style="width: 30%">
-              <p class="text-center pilih-wall" data-bs-toggle="offcanvas" data-bs-target="#Id2" aria-controls="Id2">
-                <span>Kembali</span>
-                <i class="fa-solid fa-angles-right"></i>
-              </p>
+            <div class="modal-body">                
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td class="modal-label"style="font-size:13px;font-weight:bold">Tujuan :</td>
+                            <td style="font-size:13px;font-weight:bold" class="modal-value text-right" id="nomorTujuanModal"></td>
+                        </tr> 
+                                                             
+                        <tr style="border-top: 1px dashed #999;">
+                            <td class="modal-label"style="font-size:13px;font-weight:bold">Produk:</td>
+                            <td style="font-size:13px;font-weight:bold" class="modal-value text-right" id="productNameModal"></td>
+                        </tr>
+                        <tr style="border-top: 1px dashed #999;">
+                            <td class="modal-label"style="font-size:13px;font-weight:bold">Harga:</td>
+                            <td style="font-size:13px;font-weight:bold" class="modal-value text-right" id="productPriceModal"></td>
+                        </tr>                                                                                 
+                        
+                           <tr>  
+                         
+                            <td colspan="2" style="border: 0.1px solid #ccc;font-size:12px;padding:15px;font-weight:bold;text-align: center;background: #fff;" id="deskripsisingkatModal"></td>
+                        </tr>
+                    </tbody>
+                </table>       
+              <div class="group-button" style="background-color: #fff; margin-top: 3px; padding: 5px; border-radius: 5px; border: 2px solid aliceblue; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    
+    <a id="link-beli" href="https://p.com" class="btn btn-primary custom-button" style="box-shadow: none; border-color: transparent;width: 100%; border-radius: 5px;margin-top:-15px;">Beli sekarang</a>
+</div>
+                    
+               
+                </div>
             </div>
-          </div>
         </div>
-        <!-- Input -->
-        <div class="d-flex justify-content-beetween">
-          <div class="d-block input" id="box-first-input">
-            <label class="label-input">ID User</label>
-            <input type="text" id="1InputGame" maxlength="20" class="form-input p-2" placeholder="Masukan ID"
-              autocomplete="off">
-          </div>
-          <div class="d-block sec-input d-none" id="box-sec-input">
-            <label class="label-input">Zone ID</label>
-            <input type="text" id="2InputGame" maxlength="20" class="form-input p-2" placeholder="Masukan Zone ID"
-              autocomplete="off">
-          </div>
-          <div class="d-block sec-input d-none" id="box-third-input">
-            <label class="label-input">Server ID</label>
-            <select class="form-input p-2" id="genshinGame">
-              <option disabled selected="true" value="" hidden="true">-- Pilih Server --</option>
-              <option value="os_asia">Asia</option>
-              <option value="os_usa">America</option>
-              <option value="os_euro">Europe</option>
-              <option value="os_cht">TW, HK, MO</option>
-            </select>
-          </div>
-          <div class="d-block sec-input d-none" id="box-fourth-input">
-            <label class="label-input">Server ID</label>
-            <select class="form-input p-2" id="ragnarokGame">
-              <option disabled selected="true" value="" hidden="true">-- Pilih Server --</option>
-              <option value="90001">Eternal Love</option>
-              <option value="90002">Midnight Party</option>
-              <option value="90002003">Memory of Faith</option>
-            </select>
-          </div>
-        </div>
-        <p class="text-danger mt-2" style="text-align: justify;" id="alert">Hati-hati produk ini tidak bisa Cek Nama</p>
-
-      </div>
-
-
-      <!-- Pilihan -->
-      <div id="box-pilihan">
-        <div class="d-flex justify-content-beetween mt-3 pilihan-pulsa" id="dataPilihan">
-
-        </div>
-      </div>
-
-  </section>
-
-  <!-- Data API -->
-  <section id="dataAPI" class="mt-4 container">
-
-  </section>
-
-  <!-- OffCanvas Left -->
-  <div class="offcanvas offcanvas-end show" tabindex="-1" id="Id2" aria-labelledby="offcanvasLeftLabel">
-    <div class="bg-canvas-start px-3 py-3">
-      <div class="d-flex justify-content-between">
-        <div class="d-block">
-          <div class="d-flex">
-            <p class="name-paket fw-bold">Top-Up Game</p>
-          </div>
-        </div>
-        <div class="d-flex justify-content-end" style="position: absolute; right: 10px">
-          <i class="bi bi-caret-down-fill" style="font-size: 25px; margin-top: -5px; transform: rotate(270deg);"
-            data-bs-dismiss="offcanvas" aria-label="Close"></i>
-        </div>
-      </div>
-      <input class="form-control form-lb mt-3 mb-2" placeholder="Cari Game Disini " id="src" type="search" />
-
     </div>
+</div>
+    <script>
+       $// Ubah bagian skrip berikut
+$('#productModal').on('show.bs.modal', function (e) {
+    var descriptionContainer = document.getElementById("deskripsisingkatModal");
+    descriptionContainer.innerHTML = descriptionContainer.innerText;
+});
 
-    <section class="offcanvas-body" class="container">
-      <div id="katUtama" class="row"></div>
-    </section>
-
-  </div>
-
-
-  <!-- PopUp -->
-  <div class="offcanvas offcanvas-bottom" tabindex="-1" id="Id3" aria-labelledby="modalBottom">
-    <div class="bg-canvas d-flex justify-content-between px-3 py-3">
-      <div class="d-block">
-        <div class="d-flex">
-          <p class="rc">Rincian Pembelian </p>
-        </div>
-      </div>
-      <div class="d-flex justify-content-end" style="position: absolute; right: 20px">
-        <i class="bi bi-caret-down-fill" style="font-size: 25px; margin-top: -5px" data-bs-dismiss="offcanvas"
-          aria-label="Close"></i>
-      </div>
-    </div>
-    <div class="offcanvas-body">
-
-      <div class="d-flex justify-content-between">
-        <p class="indx me-2">Produk</p>
-        <p class="val text-end" id="prod">Loading...</p>
-      </div>
-
-      <hr class="dashed">
-
-      <div class="d-flex justify-content-between">
-        <p class="indx me-2" id="tujuan">ID User</p>
-        <p class="val" id="numb">Loading...</p>
-      </div>
-
-      <hr class="dashed">
-
-      <div id="box-nama">
-        <div class="d-flex justify-content-between">
-          <p class="indx me-2">Nama</p>
-          <p class="val val-cek" id="nama">Loading...</p>
-        </div>
-
-        <hr class="dashed">
-      </div>
-
-      <p class="indx">Deksripsi</p>
-      <p class="val mt-1" id="desc">Loading...</p>
-
-      <hr class="bo">
-
-      <div class="d-flex justify-content-between">
-        <p class="indx me-2" id="harga">Harga</p>
-        <p class="val fw-bold" id="prc">Loading...</p>
-      </div>
-
-      <div class="d-flex justify-content-between mt-5" id="btls">
-        <div class="btn-beli px-3 py-1 w-100 text-center" id="btnMT">Mohon Tunggu...</div>
-
-        <button class="btn-batal px-3 py-2 w-100 me-3" data-bs-dismiss="offcanvas" aria-label="Close"
-          id="btnBtl">Batalkan</button>
-
-        <a id="btnBli" class="btn-beli px-3 py-2 w-100 text-center">Beli Sekarang</a>
-
-      </div>
-    </div>
-  </div>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript">
-
-    //---------- Pengaturan ----------//
-
-    // LINK TOKO
-    const urlToko = "https://supertopupid.bukaolshop.site"
-
-
-    // LINK Kategori
-    const urlKategori = [
-      {
-        "nama": "Mobile Legends",
-        "cekID": "mobilelegends",
-        "gambar": "https://i.ibb.co/0YmCR0r/ml.jpg",
-        "kode": "2InputGame",
-        "categoryKe1": {
-          "nama": "Diamond",
-          "url": "mobile-legends-57372",
-          "data": "grid"
+      var activeCategoryColor = "";
+   var previousNomorPemanggil = ""; document.addEventListener("DOMContentLoaded", function () {
+    const kategoriUrls = [
+        {
+            "Idkategori1": "379295",
+            
+           
+             "Warna": "linear-gradient(to right, #BD180F, #F56338)",
+            "propaider": "Telkomsel",
+            "nomorpemanggil": ["0811", "0812", "0813", "0821", "0822", "0852", "0853", "0823", "0851", "0835"]
         },
-        "categoryKe2": {
-          "nama": "Membership",
-          "url": "starlight-twilight-384025",
-          "data": "list"
-        }
-      },
-      
-       {
-        "nama": "MLBB Super FAST",
-        "cekID": "#",
-        "gambar": "https://i.ibb.co/0YmCR0r/ml.jpg",
-        "kode": "2InputGame",
-        "categoryKe1": {
-          "nama": "Diamond",
-          "url": "mlbb-2-498081",
-          "data": "grid"
+        {
+            "Idkategori1": "382939",
+            
+            
+           "Warna": "linear-gradient(to right, #F03665, #F56338)",
+            "propaider": "Tre ID",
+            "nomorpemanggil": ["0895", "0896", "0897", "0898", "0899"]
         },
-        "categoryKe2": {
-          "nama": "Membership",
-          "url": "starlight-twilight-384025",
-          "data": "list"
-        }
-      },
-
-      {
-        "nama": "Free Fire",
-        "cekID": "freefire",
-        "gambar": "https://i.ibb.co/2YZNmnm/free-fire-new-logo.jpg",
-        "kode": "1InputGame",
-        "categoryKe1": {
-          "nama": "Diamond",
-          "url": "free-fire-57364",
-          "data": "grid"
+        {
+            "Idkategori1": "382879",
+            
+           "Warna": "linear-gradient(to right, #703090, #703090)",
+            "propaider": "Axis ",
+            "nomorpemanggil": ["0838", "0831", "0832", "0833"]
         },
-        "categoryKe2": {
-          "nama": "#",
-          "url": "#",
-          "data": "list"
-        }
-      },
-
-      {
-        "nama": "PUBG",
-        "cekID": "#",
-        "gambar": "https://i.ibb.co/qCnVj9G/pubgm.jpg",
-        "kode": "1InputGame",
-        "categoryKe1": {
-          "nama": "UC",
-          "url": "pubg-m-57296",
-          "data": "grid"
+        {
+            "Idkategori1": "379298",
+            
+           "Warna": "linear-gradient(to right, #F8B80E, #F19722)",
+            "propaider": "Indosat",
+            "nomorpemanggil": ["0814", "0815", "0816", "0855", "0856", "0857", "0858"]
         },
-        "categoryKe2": {
-          "nama": "Membership",
-          "url": "telkomsel-reguler-349764",
-          "data": "list"
-        }
-      },
-
-      {
-        "nama": "FC MOBILE",
-        "cekID": "#",
-        "gambar": "https://sin1.contabostorage.com/0a986eb902c4469cb860e43985eb18a1:vocapanel/vocagame/fifamobile-a539-original.webp",
-        "kode": "1InputGame",
-        "categoryKe1": {
-          "nama": "POINT",
-          "url": "fifa-mobile-456603",
-          "data": "grid"
+        {
+            "Idkategori1": "382897",
+            
+           "Warna": "linear-gradient(to right, #0128A7, #00C798)",
+            "propaider": "Xl axiata",
+            "nomorpemanggil": ["0818", "0817", "0819", "0859", "0877", "0878"]
         },
-        "categoryKe2": {
-          "nama": "#",
-          "url": "#",
-          "data": "list"
-        }
-      },
-
-      {
-        "nama": "Arena Of Valor",
-        "cekID": "aov",
-        "gambar": "https://i.ibb.co/Xzg6VHS/aov-promo.jpg",
-        "kode": "1InputGame",
-        "categoryKe1": {
-          "nama": "Diamond",
-          "url": "aov-381672",
-          "data": "grid"
+         {
+            "Idkategori1": "382908",
+           
+           "Warna": "linear-gradient(to right, #C80050, #F84277)",
+            "propaider": "Smartfren",
+            "nomorpemanggil": ["0881", "0882", "0883", "0884", "0885", "0886", "0887", "0888", "0889"]
         },
-        "categoryKe2": {
-          "nama": "#",
-          "url": "#",
-          "data": "list"
-        }
-      },
+        // Tambahkan kategori lainnya sesuai kebutuhan
+    ];
 
-      {
-        "nama": "COD Mobile",
-        "cekID": "callofduty",
-        "gambar": "https://i.ibb.co/YTWK4cC/codm.jpg",
-        "kode": "1InputGame",
-        "categoryKe1": {
-          "nama": "CP",
-          "url": "codm-58100",
-          "data": "grid"
-        },
-        "categoryKe2": {
-          "nama": "#",
-          "url": "#",
-          "data": "list"
-        }
-      },
+    var produkList = document.getElementById("produk-list");
+    var inputNumber = document.getElementById("inputNumber");
+    var regulerButton = document.querySelector('.reguler-button');
+    var transferButton = document.querySelector('.transfer-button');
+    var activeCategory;
+    var productsLoaded = false;
 
-      {
-        "nama": "Metal Slug:Awakening",
-        "cekID": "#",
-        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEdd2l-VghoKEUCw7H2NkCFJLtEYe-ve6tKA&usqp=CAU",
-        "kode": "1InputGame",
-        "categoryKe1": {
-          "nama": "Metal Slug",
-          "url": "metal-slug-awakeni-485115",
-          "data": "grid"
-        },
-        "categoryKe2": {
-          "nama": "#",
-          "url": "#",
-          "data": "list"
-        }
-      },
-
-
-      {
-        "nama": "Point Blank",
-        "cekID": "pointblank",
-        "gambar": "https://i.ibb.co/Pjgt9nk/Point-Blank-ID-tile.jpg",
-        "kode": "1InputGame",
-        "categoryKe1": {
-          "nama": "Diamond",
-          "url": "point-blank-58272",
-          "data": "grid"
-        },
-        "categoryKe2": {
-          "nama": "#",
-          "url": "#",
-          "data": "list"
-        }
-      },
-
-
-      {
-        "nama": "Garena Undawn",
-        "cekID": "undawn",
-        "gambar": "https://play-lh.googleusercontent.com/CED_RfFmarZ82aT0AAJzIw1e7v54ZxjBksdpzDpwiGCa7UQj7IVgFtGoxTBFvXwh4No=w480-h960-rw",
-        "kode": "1InputGame",
-        "categoryKe1": {
-          "nama": "RC",
-          "url": "garena-undawn-465610",
-          "data": "grid"
-        },
-        "categoryKe2": {
-          "nama": "#",
-          "url": "#",
-          "data": "list"
-        }
-      },
-
-      {
-        "nama": "DRAGON NEST 2 E",
-        "cekID": "#",
-        "gambar": "https://assets.lapakgaming.com/images/DN2EVO.png?v=1689668495&tr=w-128%2Cq-75",
-        "kode": "1InputGame",
-        "categoryKe1": {
-          "nama": "Diamond",
-          "url": "dragon-nest-2-evolut-475919",
-          "data": "grid"
-        },
-        "categoryKe2": {
-          "nama": "#",
-          "url": "#",
-          "data": "list"
-        }
-      },
-
-      {
-        "nama": "Super Sus",
-        "cekID": "#",
-        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFXW-vno7B5LtJPBj3UJHxMfdMUCdPC3ISaA&usqp=CAU",
-        "kode": "1InputGame",
-        "categoryKe1": {
-          "nama": "Diamond",
-          "url": "super-sus-386221",
-          "data": "grid"
-        },
-        "categoryKe2": {
-          "nama": "#",
-          "url": "#",
-          "data": "list"
-        }
-      },
-
-      {
-        "nama": "Genshin Impact",
-        "cekID": "gensin",
-        "gambar": "https://i.ibb.co/NrS3zLJ/genshin.jpg",
-        "kode": "genshinGame",
-        "categoryKe1": {
-          "nama": "Genesis Crystal",
-          "url": "genshin-impact-381697",
-          "data": "grid"
-        },
-        "categoryKe2": {
-          "nama": "Membership",
-          "url": "...",
-          "data": "list"
-        }
-      },
-      
-      {
-        "nama": "Honkai Star Rail",
-        "cekID": "#",
-        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRofvU2c2M3rlTmO_qo3F44JaTVi-xzSdJkGQ&usqp=CAU",
-        "kode": "1InputGame",
-        "categoryKe1": {
-          "nama": "Oneiric Shard",
-          "url": "honkai-star-rail-498394",
-          "data": "grid"
-        },
-        "categoryKe2": {
-          "nama": "Membership",
-          "url": "telkomsel-reguler-349764",
-          "data": "list"
-        }
-      },
-
-
-      {
-        "nama": "Valorant",
-        "cekID": "valorant",
-        "gambar": "https://i.ibb.co/rvpVvLd/valorant-promo.jpg",
-        "kode": "pagarGame",
-        "categoryKe1": {
-          "nama": "VP",
-          "url": "valorant-386296",
-          "data": "grid"
-        },
-        "categoryKe2": {
-          "nama": "#",
-          "url": "#",
-          "data": "list"
-        }
-      },
-      
-       {
-        "nama": "League of Legends : WildRift",
-        "cekID": "wildrift",
-        "gambar": "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/35933/996599017o.jpg",
-        "kode": "pagarGame",
-        "categoryKe1": {
-          "nama": "WildCore",
-          "url": "lol-wild-rift-386440",
-          "data": "grid"
-        },
-        "categoryKe2": {
-          "nama": "#",
-          "url": "#",
-          "data": "list"
-        }
-      },
-
-      {
-        "nama": "Ragnarok Mobiel",
-        "cekID": "ragnarokm",
-        "gambar": "https://i.ibb.co/WnpvQJ5/ragnarok-logo.webp",
-        "kode": "ragnarokGame",
-        "categoryKe1": {
-          "nama": "Diamond",
-          "url": "telkomsel-transfer-350436",
-          "data": "grid"
-        },
-        "categoryKe2": {
-          "nama": "#",
-          "url": "#",
-          "data": "list"
-        }
-      },
-      {
-        "nama": "Sausage Man",
-        "cekID": "sausageman",
-        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_lr8NiceSy3OPURrhpuQR2yE8ZNGSeMmAiw&usqp=CAU",
-        "kode": "1InputGame",
-        "categoryKe1": {
-          "nama": "Candy",
-          "url": "sausage-man-381675",
-          "data": "grid"
-        },
-        "categoryKe2": {
-          "nama": "Membership",
-          "url": "telkomsel-reguler-349764",
-          "data": "list"
-        }
-      },
-
-    ]
-
-    var _0x3bfb = ["\x73\x75\x70\x65\x72\x74\x6F\x70\x75\x70\x69\x64\x7A"]; const aktivasi = _0x3bfb[0]
-
-
-    //---------- Jangan Dirubah ----------//
-
-    // Loading
-    var loadAwal = `<div id="loads" class="loading">
-    <div class="loadingspinner">
-    <div id="square1"></div>
-    <div id="square2"></div>
-    <div id="square3"></div>
-    <div id="square4"></div>
-    <div id="square5"></div>
-    </div>
-    <p id="text-load" class="fw-bold mt-2 text-center t-load">Masukan nomor yang valid terlebih dahulu...</p>
-    </div>`
-
-    var loads = `<div id="loads-2" class="loading">
-    <div class="loadingspinner">
-    <div id="square1"></div>
-    <div id="square2"></div>
-    <div id="square3"></div>
-    <div id="square4"></div>
-    <div id="square5"></div>
-    </div>
-    </div>`
-
-    var noSalah = `<div id="no-salah" class="container text-center produk-none animate__animated animate__fadeIn">
-    <img src="https://i.ibb.co/f8gVVGD/eror.jpg">
-    <p class="fw-bold mt-3">Nomor yang dimasukan salah nih...</p>
-    </div>`
-
-    var produkNone = `<div id="produk-none" class="text-center container produk-none animate__animated animate__fadeIn">
-    <img src="https://i.ibb.co/VwtjssF/digital-marketing.webp">
-    <p class="fw-bold mt-3">Sepertinya produk ini belum tersedia...</p>
-    </div>`
-
-    var kategoriNone = `<div id="produk-none" class="text-center mt-3 container produk-none animate__animated animate__fadeIn">
-    <img src="https://i.ibb.co/VwtjssF/digital-marketing.webp">
-    <p class="fw-bold mt-3">Kategori belum tersedia...</p>
-    </div>`
-
-    //---------- Data API ----------//
-
-
-    // loopSUbKat
-    loopSubKat(urlKategori)
-    function loopSubKat(data) {
-      $.each(data, function (i, v) {
-        $("#katUtama").append(`<div class="col-4 kerd text-center" style="margin-bottom:30px" onclick="hideInput('${v.kode}');loopDataKat('${v.categoryKe1.nama}', '${v.categoryKe1.url}', '${v.categoryKe1.data}', '${v.categoryKe2.nama}', '${v.categoryKe2.url}', '${v.categoryKe2.data}', '${v.cekID}', '${v.nama}', '${v.gambar}', '${v.kode}'); getData('${v.categoryKe1.url}', '${v.categoryKe1.nama}', '${v.categoryKe1.data}', '${v.cekID}', '${v.kode}')" data-bs-dismiss="offcanvas" aria-label="Close"">
-          <img src="${v.gambar}" class="image-game">
-          <p class="mt-1 fw-bold text-game">${v.nama}</p>
-          </div>`)
-      })
-
+    function getCategoryByNomorPemanggil(nomorPemanggil) {
+        return kategoriUrls.find(category => category.nomorpemanggil.includes(nomorPemanggil));
     }
 
-    // hideInput
-    var codeGamez = urlKategori[0].kode
-    hideInput(codeGamez)
-    function hideInput(kode) {
-      if (kode == "pagarGame") {
-        $("#box-fourth-input").addClass("d-none")
-        $("#box-third-input").addClass("d-none")
-        $("#box-sec-input").addClass("d-none")
-      } else if (kode == "1InputGame") {
-        $("#box-fourth-input").addClass("d-none")
-        $("#box-third-input").addClass("d-none")
-        $("#box-sec-input").addClass("d-none")
-      } else if (kode == "2InputGame") {
-        $("#box-fourth-input").addClass("d-none")
-        $("#box-third-input").addClass("d-none")
-        $("#box-sec-input").removeClass("d-none")
-      } else if (kode == "genshinGame") {
-        $("#box-fourth-input").addClass("d-none")
-        $("#box-third-input").removeClass("d-none")
-        $("#box-sec-input").addClass("d-none")
-      } else if (kode == "ragnarokGame") {
-        $("#box-fourth-input").removeClass("d-none")
-        $("#box-third-input").addClass("d-none")
-        $("#box-sec-input").addClass("d-none")
-      }
-    }
+    function displayProducts(products) {
+    if (products.length > 0) {
+        products.forEach(function (product) {
+            var productItem = document.createElement("li");
+            productItem.className = "product-item animate__animated animate__fadeIn";
 
+            var productName = document.createElement("h2");
+            productName.textContent = product.nama_produk;
 
-    // LoopDataKat
-    var kate1 = urlKategori[0].categoryKe1.nama
-    var urle1 = urlKategori[0].categoryKe1.url
-    var bentuke1 = urlKategori[0].categoryKe1.data
-    var kate2 = urlKategori[0].categoryKe2.nama
-    var urle2 = urlKategori[0].categoryKe2.url
-    var bentuke2 = urlKategori[0].categoryKe2.data
-    var cekIDe = urlKategori[0].cekID
-    var namae = urlKategori[0].nama
-    var gambare = urlKategori[0].gambar
-    var codeGames = urlKategori[0].kode
-    loopDataKat(kate1, urle1, bentuke1, kate2, urle2, bentuke2, cekIDe, namae, gambare, codeGames)
-    function loopDataKat(kat1, url1, bentuk1, kat2, url2, bentuk2, kode, nama, gambar, codeGame) {
-      $("#1InputGame").val("")
-      $("#2InputGame").val("")
-      $("#genshinGame").val("")
-      $("#ragnarokGame").val("")
+            var formattedPrice = parseFloat(product.harga_produk).toLocaleString('id-ID', {
+                style: 'currency',
+                currency: 'IDR'
+            });
 
-      $("#imgOperator").attr("src", gambar)
-      $("#namaOperator").html(nama)
-      $("#dataPilihan").html("")
-      if (url2 == "" || url2 == "#") {
-        $("#dataPilihan").html(`<div class="container btn-pulsa text-center" id="tombol_${kat1}" onclick="getData('${url1}', '${kat1}', '${bentuk1}', '${kode}', '${codeGame}')" > 
-        <p class="p-1">${kat1}</p>
-        </div>`)
-      } else {
-        $("#dataPilihan").html(`<div class="container btn-pulsa text-center" id="tombol_${kat1}" onclick="getData('${url1}', '${kat1}', '${bentuk1}', '${kode}', '${codeGame}')"> 
-        <p class="p-1">${kat1}</p>
-        </div>
-        <div class="container btn-pulsa text-center" id="tombol_${kat2}" onclick="getData('${url2}', '${kat2}', '${bentuk2}', '${kode}', '${codeGame}')">
-        <p class="p-1">${kat2}</p>
-        </div> `)
-      }
+            var productPrice = document.createElement("p");
+            productPrice.innerHTML = ` ${formattedPrice}`;
 
-    }
+            var categoryText = "Super Top Up";
+            var categoryInfo = document.createElement("p");
+            categoryInfo.textContent = categoryText;
+            categoryInfo.className = "category-info";
 
+            productItem.setAttribute("data-toggle", "modal");
+            productItem.setAttribute("data-target", "#productModal");
 
+            // Cari elemen dengan ID 'link-beli'
+var bayar = document.getElementById('link-beli');
 
+// Tangani klik pada setiap item produk
+productItem.addEventListener("click", function () {
+    document.getElementById("productNameModal").textContent = "" + product.nama_produk;
+    document.getElementById("productPriceModal").textContent = "" + formattedPrice;
 
+    var descriptionContainer = document.getElementById("deskripsisingkatModal");
+    descriptionContainer.textContent = "";
 
+    var wrapperDiv = document.createElement('div');
+    wrapperDiv.innerHTML = product.deskripsi_singkat;
 
-    // Loop Produk
-    function loopProduk(data, kode, codeGame, bentuk) {
-      $("#dataProduk").html("")
+    wrapperDiv.childNodes.forEach(function (node) {
+        descriptionContainer.appendChild(node.cloneNode(true));
+    });
 
-      $.each(data, function (i, v) {
-        var strHarga = v.harga.split("Rp")
-        var strProd = strHarga[1]
-        var hargaProd = `Rp ${strProd}`
-        if (bentuk == "list") {
-          $('#dataProduk').append(`<div class="cerd" style="margin-bottom:20px" data-bs-toggle="offcanvas" data-bs-target="#Id3" aria-controls="Id3" onclick="showDetail('${v.nama}','${hargaProd}','${v.url}','${kode}', '${codeGame}')">
-            <p class="nama-produk">${v.nama}</p>
-            <p class="harga-produk">${hargaProd}</p>
-            </div>`)
-        } else if (bentuk == "grid") {
-          $('#dataProduk').append(`<div class="col-6" style="margin-bottom:20px" data-bs-toggle="offcanvas" data-bs-target="#Id3" aria-controls="Id3" onclick="showDetail('${v.nama}','${hargaProd}','${v.url}','${kode}', '${codeGame}')">
-            <div class="cerd">
-            <p class="nama-produk">${v.nama}</p>
-            <p class="harga-produk">${hargaProd}</p>
-            </div>
-            </div>`)
-        }
-      });
-    }
+    // Dapatkan nomor tujuan dari input
+    var nomorTujuan = inputNumber.value;
 
+    // Buat URL produk dengan catatan nomor tujuan
+    var urlProduk = product.url_produk + "?catatan=" + encodeURIComponent(nomorTujuan);
 
+    // Atur atribut href pada elemen <a> untuk menuju URL produk
+    bayar.href = urlProduk;
+});
 
-    // cekID
-    function cekNomorPel(kode, codeGame) {
-      var urlz = "https://nielz.my.id/validation/api/game"
-      var zenkey = "8272b58207a73d9"
-      var firstInp = $("#1InputGame").val()
-      var secInp = $("#2InputGame").val()
-      var thirdInp = $("#genshinGame").val()
-      var fourthInp = $("#ragnarokGame").val()
+            productItem.appendChild(productName);
+            productItem.appendChild(productPrice);
+            productItem.appendChild(categoryInfo);
 
-      let servering, isiServering, thirdInpz, fourthInpz, idGame
-
-      const getIndex = firstInp.indexOf("#")
-      const hsl = replaceChar(firstInp, getIndex, encodeURIComponent("#"))
-
-      if (codeGame == "pagarGame") {
-        idGame = hsl
-      } else {
-        idGame = firstInp
-      }
-
-      if (kode == "mobilelegends") {
-        servering = "&zone="
-      } else {
-        servering = "&server="
-      }
-
-      if (thirdInp == null) {
-        thirdInpz = "#"
-      } else {
-        thirdInpz = thirdInp
-      }
-
-      if (fourthInp == null) {
-        fourthInpz = "#"
-      } else {
-        fourthInpz = fourthInp
-      }
-
-      if (codeGame == "2InputGame") {
-        isiServering = secInp
-      } else if (codeGame == "genshinGame") {
-        isiServering = thirdInpz
-      } else if (codeGame == "ragnarokGame") {
-        isiServering = fourthInpz
-      }
-
-      if (codeGame == "1InputGame") {
-        $.ajax({
-          method: "GET",
-          url: `${urlz}/${kode}/?id=${idGame}&key=${zenkey}`,
-          beforeSend: function () {
-            $('#nama').html('Mengecek...')
-            $("#btls").removeClass("d-flex")
-            $("#btnMT").show()
-            $("#btnBli").hide()
-            $("#btnBtl").hide()
-          },
-
-          success: function (response) {
-            if (response.hasOwnProperty('error_msg')) {
-              $('#nama').html(response.error_msg);
-              $("#btls").removeClass("d-flex")
-              $("#btnBli").hide()
-              $("#btnMT").hide()
-              $("#btnBtl").show()
-            }
-
-            else {
-              $('#nama').html(response.nickname);
-              $("#btls").addClass("d-flex")
-              $("#btnBli").show()
-              $("#btnBtl").show()
-              $("#btnMT").hide()
-            }
-          }
-        })
-      } else if (codeGame == "pagarGame") {
-        $.ajax({
-          method: "GET",
-          url: `${urlz}/${kode}/?id=${idGame}&key=${zenkey}`,
-          beforeSend: function () {
-            $('#nama').html('Mengecek...')
-            $("#btls").removeClass("d-flex")
-            $("#btnMT").show()
-            $("#btnBli").hide()
-            $("#btnBtl").hide()
-          },
-
-          success: function (response) {
-            if (response.hasOwnProperty('error_msg')) {
-              $('#nama').html(response.error_msg);
-              $("#btls").removeClass("d-flex")
-              $("#btnBli").hide()
-              $("#btnMT").hide()
-              $("#btnBtl").show()
-            }
-
-            else {
-              $('#nama').html(response.nickname);
-              $("#btls").addClass("d-flex")
-              $("#btnBli").show()
-              $("#btnBtl").show()
-              $("#btnMT").hide()
-            }
-          }
-        })
-      } else {
-        $.ajax({
-          method: "GET",
-          url: `${urlz}/${kode}/?id=${idGame}${servering}${isiServering}&key=${zenkey}`,
-          beforeSend: function () {
-            $('#nama').html('Mengecek...')
-            $("#btls").removeClass("d-flex")
-            $("#btnMT").show()
-            $("#btnBli").hide()
-            $("#btnBtl").hide()
-          },
-
-          success: function (response) {
-            if (response.hasOwnProperty('error_msg')) {
-              $('#nama').html(response.error_msg);
-              $("#btls").removeClass("d-flex")
-              $("#btnBli").hide()
-              $("#btnMT").hide()
-              $("#btnBtl").show()
-            }
-
-            else {
-              $('#nama').html(response.nickname);
-              $("#btls").addClass("d-flex")
-              $("#btnBli").show()
-              $("#btnBtl").show()
-              $("#btnMT").hide()
-            }
-          }
-        })
-      }
-
-    }
-
-
-    // Beli
-    function tombolBeli(link, idGame, zone, thirdInp, fourthInp, codeGame) {
-      let serGen
-      if (thirdInp == "os_asia") {
-        serGen = "001"
-      } else if (thirdInp == "os_usa") {
-        serGen = "002"
-      } else if (thirdInp == "os_euro") {
-        serGen = "003"
-      } else if (thirdInp == "os_cht") {
-        serGen = "004"
-      }
-
-      if (codeGame == "pagarGame") {
-        $("#btnBli").attr("href", link + "?catatan=" + idGame)
-      } else if (codeGame == "1InputGame") {
-        $("#btnBli").attr("href", link + "?catatan=" + idGame)
-      } else if (codeGame == "2InputGame") {
-        $("#btnBli").attr("href", link + "?catatan=" + idGame + zone)
-      } else if (codeGame == "genshinGame") {
-        $("#btnBli").attr("href", link + "?catatan=" + serGen + idGame)
-      } else if (codeGame == "ragnarokGame") {
-        $("#btnBli").attr("href", link + "?catatan=" + idGame + fourthInp)
-      }
-    }
-
-    // search
-    $(document).ready(function () {
-      $("#search").on("input", function () {
-        var value = $(this).val().toLowerCase();
-        $("section .cerd").filter(function () {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            produkList.appendChild(productItem);
         });
-      });
+    }
+}
 
-      $("#src").on("input", function () {
-        var value = $(this).val().toLowerCase();
-        $("section .kerd").filter(function () {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-      });
-    })
+    function fetchProductsByPage(page) {
+        if (activeCategory) {
+            var token = "eyJhcHAiOiIzNDkwMiIsImF1dGgiOiIyMDIwMDkwOSIsInNpZ24iOiJMWjF4MmVSYlJBaVZsczN4bElmOWNRPT0ifQ==";
+            var apiUrl = "https://openapi.bukaolshop.net/v1/app/produk?token=" + token + "&page=" + page + "&id_kategori=" + activeCategory;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    displayProducts(data.data);
+                    sortAndDisplayProducts(true); // Mengurutkan produk secara otomatis
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    }
+
+    function sortAndDisplayProducts(ascending) {
+        if (productsLoaded) {
+            var productList = Array.from(document.querySelectorAll('.product-item'));
+
+            productList.sort(function (a, b) {
+                var priceA = parseFloat(a.querySelector('p').textContent.split(" ")[1].trim().replace("Rp", "").replace(",", ""));
+                var priceB = parseFloat(b.querySelector('p').textContent.split(" ")[1].trim().replace("Rp", "").replace(",", ""));
+
+                return ascending ? priceA - priceB : priceB - priceA;
+            });
+
+            produkList.innerHTML = "";
+
+            productList.forEach(function (productItem) {
+                produkList.appendChild(productItem);
+            });
+        }
+    }
+
+    function handleInput() {
+    var nomorPemanggil = inputNumber.value.slice(0, 4);
+    if (nomorPemanggil.length === 4) {
+        var selectedCategory = getCategoryByNomorPemanggil(nomorPemanggil);
+        if (selectedCategory) {
+            var newCategory = transferButton.classList.contains('active') ? selectedCategory.Idkategori2 : selectedCategory.Idkategori1;
+
+            if (newCategory !== activeCategory) {
+                produkList.innerHTML = "";
+                productsLoaded = false;
+            }
+
+            activeCategory = newCategory;
+            activeCategoryColor = selectedCategory.Warna; // Simpan warna kategori yang aktif
+
+            if (!productsLoaded) {
+                for (let page = 1; page <= 5; page++) {
+                    fetchProductsByPage(page);
+                }
+
+                productsLoaded = true;
+            }
+            // Tambahan logika untuk menampilkan propaider
+var label = document.querySelector('label[for="inputNumber"]');
+label.innerHTML = `Pulsa (${selectedCategory.propaider})`;
+label.style.background = selectedCategory.Warna; // Mengatur warna gradien latar belakang
+// Akhir dari tambahan logika
+
+        } else {
+            productsLoaded = false;
+            produkList.innerHTML = "";
+        }
+    } else {
+        productsLoaded = false;
+        produkList.innerHTML = "";
+    }
+
+    // Update warna label
+    updateLabelColor();
+}
+
+// Tambahkan fungsi untuk memperbarui warna label
+function updateLabelColor() {
+    var label = document.querySelector('label[for="inputNumber"]');
+    if (activeCategoryColor) {
+        label.style.backgroundColor = activeCategoryColor;
+    } else {
+        label.style.backgroundColor = ""; // Atur ke nilai default jika warna tidak ditemukan
+    }
+}
 
 
+function loadIdkategori1(nomorPemanggil) {
+    var selectedCategory = getCategoryByNomorPemanggil(nomorPemanggil);
+    if (selectedCategory) {
+        activeCategory = selectedCategory.Idkategori1;
+        activeCategoryColor = selectedCategory.Warna;
+        produkList.innerHTML = "";
+        productsLoaded = false;
 
+        for (let page = 1; page <= 5; page++) {
+            fetchProductsByPage(page);
+        }
 
-  </script>
-  <script src="https://nielz.my.id/scriptelzdesign/game.js"></script>
-</body>
+        productsLoaded = true;
+        handleInput();
+        
+    }
+}
 
-</html>
+var selectedCategory; // Pindahkan definisi selectedCategory ke luar dari event listener
+
+// Tambahkan event listener ke elemen input
+// Deklarasi variabel global
+var previousNomorPemanggil = "";
+
+// Tambahkan event listener ke elemen input
+inputNumber.addEventListener("input", function () {
+    var currentNomorPemanggil = inputNumber.value.slice(0, 4);
+
+    if (currentNomorPemanggil !== previousNomorPemanggil) {
+        // Pemanggilan fungsi untuk menangani perubahan nomor pemanggil
+        if (currentNomorPemanggil.length === 4) {
+            loadIdkategori1(currentNomorPemanggil);
+        } else {
+            productsLoaded = false;
+            produkList.innerHTML = "";
+        }
+
+        // Memanggil fungsi untuk memperbarui warna label
+        updateLabelColor();
+
+        // Tambahan logika untuk menampilkan propaider dan mengatur warna latar belakang
+        var label = document.querySelector('label[for="inputNumber"]');
+        if (currentNomorPemanggil.length === 4 && selectedCategory) {
+            label.innerHTML = `Pulsa (${selectedCategory.propaider})`;
+            label.style.background = selectedCategory.
